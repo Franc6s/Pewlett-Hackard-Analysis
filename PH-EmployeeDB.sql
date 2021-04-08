@@ -1,30 +1,59 @@
-CREATE TABLE titles(
+--Create Table
+drop table dept_manager_2_ cascade ;
+CREATE TABLE departments_2(
+	dept_no VARCHAR(4) NOT NULL,
+	dept_name VARCHAR(40) NOT NULL,
+	PRIMARY KEY (dept_no),
+	UNIQUE(dept_name)
+);
+
+CREATE TABLE employees_2(
 	emp_no INT NOT NULL,
-	title VARCHAR NOT NULL,
+	birth_date DATE NOT NULL,
+	first_name VARCHAR NOT NULL,
+	last_name VARCHAR NOT NULL,
+	gender VARCHAR NOT NULL,
+	hire_date DATE NOT NULL,
+	PRIMARY KEY(emp_no));
+
+CREATE TABLE dept_manager_2_1(
+	dept_no VARCHAR(4) NOT NULL,
+	emp_no INT NOT NULL,
 	from_date DATE NOT NULL,
 	to_date DATE NOT NULL,
-FOREIGN KEY(emp_no) REFERENCES employees(emp_no),
-PRIMARY KEY(title));
+FOREIGN KEY (dept_no) REFERENCES departments_2 (dept_no));
 
-Drop table titles cascade;
-
-CREATE TABLE titles_1(
+CREATE TABLE salaries_2(
 	emp_no INT NOT NULL,
-	title VARCHAR NOT NULL,
+	salary INT NOT NULL,
 	from_date DATE NOT NULL,
 	to_date DATE NOT NULL,
-FOREIGN KEY(emp_no) REFERENCES employees(emp_no),
-PRIMARY KEY(title));
-
-drop table titles_1 cascade;
-
+	FOREIGN KEY (emp_no) REFERENCES employees_2(emp_no),
+	PRIMARY KEY (emp_no));
+    
 CREATE TABLE titles_2(
 	emp_no INT NOT NULL,
 	title VARCHAR NOT NULL,
 	from_date DATE NOT NULL,
 	to_date DATE NOT NULL,
-FOREIGN KEY(emp_no) REFERENCES employees(emp_no),
-PRIMARY KEY(title));
+FOREIGN KEY(emp_no) REFERENCES employees_2(emp_no));
+--Retirement eligibility
 
+SELECT first_name, last_name
+FROM employees_2
+WHERE (birth_date BETWEEN '1952-01-01' AND '1955-12-31')
+AND (hire_date BETWEEN '1985-01-01' AND '1988-12-31')
 
-drop table titles_2 cascade;
+--Number of People Retiring
+--Count the number of people retiring
+SELECT COUNT(first_name) 
+FROM employees_2
+WHERE (birth_date BETWEEN '1952-01-01' AND '1955-12-31')
+AND (hire_date BETWEEN '1985-01-01' AND '1988-12-31')
+
+--Create a new table
+SELECT first_name, last_name
+INTO retirement_info
+FROM employees_2
+WHERE (birth_date BETWEEN '1952-01-01' AND '1955-12-31')
+AND (hire_date BETWEEN '1985-01-01' AND '1988-12-31')

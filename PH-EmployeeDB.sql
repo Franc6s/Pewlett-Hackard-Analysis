@@ -90,3 +90,6 @@ SELECT departments_2.dept_name,
 FROM departments_2
 INNER JOIN dept_manager_2_1
 ON departments_2.dept_no = dept_manager_2_1.dept_no;
+
+--LEFT JOIN CODE:
+-- Joining retirement_info and dept_emp tables

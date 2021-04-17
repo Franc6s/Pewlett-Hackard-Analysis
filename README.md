@@ -5,7 +5,7 @@ The purpose of the analysis was to create databases with information on employee
 
 ## Results
 
-### The retirement database 
+### 1) The retirement database 
 The output shows data of retiring employees that were born between 01-01-1955 and 12-31-1955
 Image 4-17-21 at 2.32 AM.jpg![image](https://user-images.githubusercontent.com/78506782/115104264-51358380-9f25-11eb-8f45-6ddd69b93786.png)
 

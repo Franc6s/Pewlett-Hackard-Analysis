@@ -90,7 +90,7 @@ WHERE (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
 ORDER BY e.emp_no,
 		de.to_date DESC
 	
-SELECT * from department_employees;
+
 
 
 

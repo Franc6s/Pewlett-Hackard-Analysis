@@ -7,6 +7,13 @@ CREATE TABLE departments_2(
 	UNIQUE(dept_name)
 );
 
+CREATE TABLE department_employees(
+	emp_no INT NOT NULL,
+	dept_no VARCHAR(4)NOT NULL,
+	from_date DATE NOT NULL,
+	to_date DATE NOT NULL,
+FOREIGN KEY (emp_no) REFERENCES employees_2(emp_no));
+
 CREATE TABLE employees_2(
 	emp_no INT NOT NULL,
 	birth_date DATE NOT NULL,

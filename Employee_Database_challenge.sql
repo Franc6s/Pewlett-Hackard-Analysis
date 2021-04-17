@@ -62,12 +62,37 @@ ORDER BY count DESC
 
 --DELIVERABLE 2
 
-SELECT emp_no
-	,first_name
-	,last_name
-	,birth_date
-FROM employees_2;
+--1 SELECTING FROM MULTIPLE TABLES
+SELECT e.emp_no
+	,e.first_name
+	,e.last_name
+	,e.birth_date
+	,de.from_date
+	,de.to_date
+	,ti.title
+FROM employees_2 as e
+LEFT JOIN department_employees as de ON e.emp_no = de.emp_no
+LEFT JOIN titles_2 as ti ON e.emp_no = ti.emp_no
 
-SELECT from_date,to_date FROM dept_manager_2_1;
+--2 USE DISTINCT ON
+SELECT DISTINCT ON (e.emp_no) e.emp_no
+	,e.first_name
+	,e.last_name
+	,e.birth_date
+	,de.from_date
+	,de.to_date
+	,ti.title
+INTO mentorship_eligibility
+FROM employees_2 as e
+LEFT JOIN department_employees as de ON e.emp_no = de.emp_no
+LEFT JOIN titles_2 as ti ON e.emp_no = ti.emp_no
+WHERE (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
+ORDER BY e.emp_no,
+		de.to_date DESC
+	
+SELECT * from department_employees;
 
-SELECT title from titles_2;
+
+
+
+
